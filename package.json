@@ -8,5 +8,8 @@
   "repository": "https://github.com/submit-dsm/shogong.git",
   "author": "kimulchan <leerabi577@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.0",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
 }

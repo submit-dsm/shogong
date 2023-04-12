@@ -24,6 +24,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/server"\
       },\
       {\
+        "name": "@packages/ui",\
+        "reference": "workspace:packages/ui"\
+      },\
+      {\
         "name": "user",\
         "reference": "workspace:packages/user"\
       }\
@@ -32,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
       ["@packages/server", ["workspace:packages/server"]],\
+      ["@packages/ui", ["workspace:packages/ui"]],\
       ["admin", ["workspace:packages/admin"]],\
       ["shogong", ["workspace:."]],\
       ["user", ["workspace:packages/user"]]\
@@ -43,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -282,6 +288,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/server/",\
           "packageDependencies": [\
             ["@packages/server", "workspace:packages/server"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@packages/ui", [\
+        ["workspace:packages/ui", {\
+          "packageLocation": "./packages/ui/",\
+          "packageDependencies": [\
+            ["@packages/ui", "workspace:packages/ui"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -2934,7 +2949,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["shogong", "workspace:."]\
+            ["shogong", "workspace:."],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
           ],\
           "linkType": "SOFT"\
         }]\
