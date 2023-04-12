@@ -1,0 +1,12 @@
+{
+  "name": "shogong",
+  "version": "1.0.0",
+  "main": "index.js",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "repository": "https://github.com/submit-dsm/shogong.git",
+  "author": "kimulchan <leerabi577@gmail.com>",
+  "license": "MIT",
+  "packageManager": "yarn@3.5.0"
+}
