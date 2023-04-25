@@ -753,10 +753,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@service/server", "workspace:services/server"],\
             ["@prisma/client", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:4.13.0"],\
+            ["@types/cors", "npm:2.8.13"],\
             ["@types/express", "npm:4.17.17"],\
+            ["@types/morgan", "npm:1.9.4"],\
             ["@types/node", "npm:18.16.0"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.42"],\
+            ["cors", "npm:2.8.5"],\
             ["express", "npm:4.18.2"],\
+            ["morgan", "npm:1.10.0"],\
             ["nodemon", "npm:2.0.22"],\
             ["prisma", "npm:4.13.0"],\
             ["ts-node", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:10.9.1"]\
@@ -896,6 +900,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/cors", [\
+        ["npm:2.8.13", {\
+          "packageLocation": "./.yarn/cache/@types-cors-npm-2.8.13-4b8ac1068f-7ef197ea19.zip/node_modules/@types/cors/",\
+          "packageDependencies": [\
+            ["@types/cors", "npm:2.8.13"],\
+            ["@types/node", "npm:18.16.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/emscripten", [\
         ["npm:1.39.6", {\
           "packageLocation": "./.yarn/cache/@types-emscripten-npm-1.39.6-c9c4021365-437f2f9cdf.zip/node_modules/@types/emscripten/",\
@@ -963,6 +977,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-mime-npm-3.0.1-dec03536dc-4040fac73f.zip/node_modules/@types/mime/",\
           "packageDependencies": [\
             ["@types/mime", "npm:3.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/morgan", [\
+        ["npm:1.9.4", {\
+          "packageLocation": "./.yarn/cache/@types-morgan-npm-1.9.4-2df2111089-d1e99c66a4.zip/node_modules/@types/morgan/",\
+          "packageDependencies": [\
+            ["@types/morgan", "npm:1.9.4"],\
+            ["@types/node", "npm:18.16.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1702,6 +1726,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["basic-auth", [\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/basic-auth-npm-2.0.1-f1627ef330-3419b805d5.zip/node_modules/basic-auth/",\
+          "packageDependencies": [\
+            ["basic-auth", "npm:2.0.1"],\
+            ["safe-buffer", "npm:5.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["big-integer", [\
         ["npm:1.6.51", {\
           "packageLocation": "./.yarn/cache/big-integer-npm-1.6.51-1a244d8e1f-3d444173d1.zip/node_modules/big-integer/",\
@@ -2123,6 +2157,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/cookie-signature-npm-1.0.6-93f325f7f0-f4e1b0a98a.zip/node_modules/cookie-signature/",\
           "packageDependencies": [\
             ["cookie-signature", "npm:1.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cors", [\
+        ["npm:2.8.5", {\
+          "packageLocation": "./.yarn/cache/cors-npm-2.8.5-c9935a2d12-ced838404c.zip/node_modules/cors/",\
+          "packageDependencies": [\
+            ["cors", "npm:2.8.5"],\
+            ["object-assign", "npm:4.1.1"],\
+            ["vary", "npm:1.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4690,6 +4735,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["morgan", [\
+        ["npm:1.10.0", {\
+          "packageLocation": "./.yarn/cache/morgan-npm-1.10.0-a0da109b6b-fb41e226ab.zip/node_modules/morgan/",\
+          "packageDependencies": [\
+            ["morgan", "npm:1.10.0"],\
+            ["basic-auth", "npm:2.0.1"],\
+            ["debug", "virtual:759fd14db92b54abdb7afb3d21dbf8d50f1a5c59c96cd3f963ce3e3ed063bdb801142fae5f01cc81fb79f7ddc13b7c31a9deb9d5a9cfa48ec107f83de8f7f40e#npm:2.6.9"],\
+            ["depd", "npm:2.0.0"],\
+            ["on-finished", "npm:2.3.0"],\
+            ["on-headers", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ms", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/ms-npm-2.0.0-9e1101a471-0e6a22b8b7.zip/node_modules/ms/",\
@@ -5002,11 +5061,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["on-finished", [\
+        ["npm:2.3.0", {\
+          "packageLocation": "./.yarn/cache/on-finished-npm-2.3.0-4ce92f72c6-1db595bd96.zip/node_modules/on-finished/",\
+          "packageDependencies": [\
+            ["on-finished", "npm:2.3.0"],\
+            ["ee-first", "npm:1.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:2.4.1", {\
           "packageLocation": "./.yarn/cache/on-finished-npm-2.4.1-907af70f88-d20929a25e.zip/node_modules/on-finished/",\
           "packageDependencies": [\
             ["on-finished", "npm:2.4.1"],\
             ["ee-first", "npm:1.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["on-headers", [\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/on-headers-npm-1.0.2-e7cd3ea25e-2bf1346721.zip/node_modules/on-headers/",\
+          "packageDependencies": [\
+            ["on-headers", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5610,6 +5686,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["safe-buffer", [\
+        ["npm:5.1.2", {\
+          "packageLocation": "./.yarn/cache/safe-buffer-npm-5.1.2-c27fedf6c4-f2f1f7943c.zip/node_modules/safe-buffer/",\
+          "packageDependencies": [\
+            ["safe-buffer", "npm:5.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:5.2.1", {\
           "packageLocation": "./.yarn/cache/safe-buffer-npm-5.2.1-3481c8aa9b-b99c4b41fd.zip/node_modules/safe-buffer/",\
           "packageDependencies": [\
