@@ -771,15 +771,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@service/user", "workspace:services/user"],\
             ["@emotion/react", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:11.10.6"],\
             ["@emotion/styled", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:11.10.6"],\
+            ["@package/ui", "workspace:packages/ui"],\
             ["@types/node", "npm:18.15.11"],\
             ["@types/react", "npm:18.0.34"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["axios", "npm:1.3.6"],\
             ["emotion", "npm:11.0.0"],\
-            ["emotion-reset", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:3.0.1"],\
             ["eslint", "npm:8.38.0"],\
             ["eslint-config-next", "virtual:fb910b0e4300ec3f86447cecd48f2329e566c297361ba745f4d288bda6d32984dae8d28e779d4ff028c71312362f91f29960050710aca283c3af047a19d08928#npm:13.3.0"],\
             ["next", "virtual:fb910b0e4300ec3f86447cecd48f2329e566c297361ba745f4d288bda6d32984dae8d28e779d4ff028c71312362f91f29960050710aca283c3af047a19d08928#npm:13.3.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:fb910b0e4300ec3f86447cecd48f2329e566c297361ba745f4d288bda6d32984dae8d28e779d4ff028c71312362f91f29960050710aca283c3af047a19d08928#npm:18.2.0"],\
             ["react-query", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:3.39.3"],\
@@ -2464,19 +2465,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:3.0.1", {\
-          "packageLocation": "./.yarn/__virtual__/emotion-reset-virtual-e7caae37b0/0/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",\
-          "packageDependencies": [\
-            ["emotion-reset", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:3.0.1"],\
-            ["@emotion/react", "virtual:631801f945a371ce038f9815a5c1bb20b00406f660a140bbee4c9767a4d7ea619f3ea9d5c199fc9d09ff55e790dfeb8c5eeaa7060604915d26fcc1ba6b15148e#npm:11.10.6"],\
-            ["@types/emotion__react", null]\
-          ],\
-          "packagePeers": [\
-            "@emotion/react",\
-            "@types/emotion__react"\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["virtual:67727585e421fe0e6d4a12c24853c999457e5a1b8205f6ca68926a325a00fa295a9569cf0c3f487267b828865d0dde3db3e5d76530d0b0be9e5450be90a4cbb3#npm:3.0.1", {\
           "packageLocation": "./.yarn/__virtual__/emotion-reset-virtual-8c901cceea/0/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",\
           "packageDependencies": [\
@@ -2525,6 +2513,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.12.0-c291ce4ee3-bf3f787fac.zip/node_modules/enhanced-resolve/",\
           "packageDependencies": [\
             ["enhanced-resolve", "npm:5.12.0"],\
+            ["graceful-fs", "npm:4.2.11"],\
+            ["tapable", "npm:2.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:5.13.0", {\
+          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.13.0-81a67f2a17-76d6844c43.zip/node_modules/enhanced-resolve/",\
+          "packageDependencies": [\
+            ["enhanced-resolve", "npm:5.13.0"],\
             ["graceful-fs", "npm:4.2.11"],\
             ["tapable", "npm:2.2.1"]\
           ],\
@@ -4803,6 +4800,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "react-dom",\
             "react",\
             "sass"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["next-transpile-modules", [\
+        ["npm:10.0.0", {\
+          "packageLocation": "./.yarn/cache/next-transpile-modules-npm-10.0.0-35632e5048-3300fc7081.zip/node_modules/next-transpile-modules/",\
+          "packageDependencies": [\
+            ["next-transpile-modules", "npm:10.0.0"],\
+            ["enhanced-resolve", "npm:5.13.0"]\
           ],\
           "linkType": "HARD"\
         }]\
