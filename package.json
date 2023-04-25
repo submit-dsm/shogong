@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "./packages/*"
+    "./packages/*",
+    "./services/*"
   ],
   "repository": "https://github.com/submit-dsm/shogong.git",
   "author": "kimulchan <leerabi577@gmail.com>",
@@ -11,5 +12,13 @@
   "packageManager": "yarn@3.5.0",
   "devDependencies": {
     "typescript": "^5.0.4"
+  },
+  "dependenciesMeta": {
+    "@prisma/client@4.13.0": {
+      "unplugged": true
+    },
+    "prisma@4.13.0": {
+      "unplugged": true
+    }
   }
 }

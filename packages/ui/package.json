@@ -1,5 +1,5 @@
 {
-  "name": "@packages/ui",
+  "name": "@package/ui",
   "main": "./src/index.ts",
   "packageManager": "yarn@3.5.0"
 }
