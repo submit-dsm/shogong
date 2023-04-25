@@ -465,6 +465,11 @@ __metadata:
 "@package/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@package/ui@workspace:packages/ui"
+  dependencies:
+    "@emotion/react": ^11.10.6
+    "@types/react": ^18.0.38
+    emotion-reset: ^3.0.1
+    react: ^18.2.0
   languageName: unknown
   linkType: soft
 
@@ -764,6 +769,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 60d2766e7644ec480075bbb154bf8fb8476089466b643662ef59964e27cae2d8c71fd9c717a4dfa9627c3e050fa2ae866d10d16f66b4509058d1bfe2a564b18c
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.0.38":
+  version: 18.0.38
+  resolution: "@types/react@npm:18.0.38"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 34481c79f4f7ea2aefbaa45281319dc183200230d932d968463eba1643bd3635073d0a17c5c613150a69e36ca18b811ecffafea6384fa3dff3b5203866339d69
   languageName: node
   linkType: hard
 
@@ -4433,7 +4449,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
+"react@npm:18.2.0, react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
