@@ -717,11 +717,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@prisma/client", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:4.13.0"],\
             ["@types/express", "npm:4.17.17"],\
             ["@types/node", "npm:18.16.0"],\
+            ["@types/uuid", "npm:9.0.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.42"],\
             ["express", "npm:4.18.2"],\
             ["nodemon", "npm:2.0.22"],\
             ["prisma", "npm:4.13.0"],\
-            ["ts-node", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:10.9.1"]\
+            ["ts-node", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:10.9.1"],\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1047,6 +1049,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-treeify-npm-1.0.0-b5e04e9cd3-1b2397030d.zip/node_modules/@types/treeify/",\
           "packageDependencies": [\
             ["@types/treeify", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/uuid", [\
+        ["npm:9.0.1", {\
+          "packageLocation": "./.yarn/cache/@types-uuid-npm-9.0.1-b44e45eb8a-c472b8a77c.zip/node_modules/@types/uuid/",\
+          "packageDependencies": [\
+            ["@types/uuid", "npm:9.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6386,6 +6397,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/utils-merge-npm-1.0.1-363bbdfbca-c810954932.zip/node_modules/utils-merge/",\
           "packageDependencies": [\
             ["utils-merge", "npm:1.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["uuid", [\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/uuid-npm-9.0.0-46c41e3e43-8dd2c83c43.zip/node_modules/uuid/",\
+          "packageDependencies": [\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
