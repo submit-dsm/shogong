@@ -462,7 +462,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@package/ui@workspace:packages/ui":
+"@package/ui@workspace:^, @package/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@package/ui@workspace:packages/ui"
   dependencies:
@@ -521,6 +521,28 @@ __metadata:
   checksum: faa749faae0e83c26ae9eb00ad36a897ac78f3cf27da8e8ff21c00bcf7973b598d823d8f2b3957ef66079288bcf577f94df831eae2d65f3f68d8ca32f18b6aff
   languageName: node
   linkType: hard
+
+"@service/admin@workspace:services/admin":
+  version: 0.0.0-use.local
+  resolution: "@service/admin@workspace:services/admin"
+  dependencies:
+    "@emotion/react": ^11.10.6
+    "@emotion/styled": ^11.10.6
+    "@package/ui": "workspace:^"
+    "@types/node": 18.15.11
+    "@types/react": 18.0.34
+    "@types/react-dom": 18.0.11
+    axios: ^1.3.6
+    eslint: 8.38.0
+    eslint-config-next: 13.3.0
+    next: 13.3.0
+    next-transpile-modules: ^10.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-query: ^3.39.3
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
 
 "@service/server@workspace:services/server":
   version: 0.0.0-use.local
@@ -1067,22 +1089,6 @@ __metadata:
   checksum: f790b99a1bf63ef160c967e23c46feea7787e531292bb827126334612c234ed489a0dc2c7ba33156416f0ffa8d25bf2b0fdb7f35c2ba60eb3e960572bece4001
   languageName: node
   linkType: hard
-
-"admin@workspace:services/admin":
-  version: 0.0.0-use.local
-  resolution: "admin@workspace:services/admin"
-  dependencies:
-    "@types/node": 18.15.11
-    "@types/react": 18.0.34
-    "@types/react-dom": 18.0.11
-    eslint: 8.38.0
-    eslint-config-next: 13.3.0
-    next: 13.3.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
 
 "agent-base@npm:6, agent-base@npm:^6.0.2":
   version: 6.0.2
@@ -2019,7 +2025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.12.0":
+"enhanced-resolve@npm:^5.10.0, enhanced-resolve@npm:^5.12.0":
   version: 5.13.0
   resolution: "enhanced-resolve@npm:5.13.0"
   dependencies:
@@ -3904,6 +3910,15 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "next-transpile-modules@npm:10.0.0"
+  dependencies:
+    enhanced-resolve: ^5.10.0
+  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
   languageName: node
   linkType: hard
 
