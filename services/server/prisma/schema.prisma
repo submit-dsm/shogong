@@ -44,6 +44,8 @@ model StudentsOnForms {
 
 model Admin {
   id String @id
+  name String
+  password String
   forms Form[]
 }
 

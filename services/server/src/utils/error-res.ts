@@ -3,7 +3,7 @@ interface ErrorResponseProps {
   message: string;
 }
 
-class ErrorResponse extends Error {
+export class ErrorResponse extends Error {
   isOperational: boolean;
 
   statusCode: number;
@@ -20,5 +20,3 @@ class ErrorResponse extends Error {
     this.stacks = this.stack;
   }
 }
-
-export default ErrorResponse;
