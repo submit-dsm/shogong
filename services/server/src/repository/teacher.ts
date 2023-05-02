@@ -1,0 +1,3 @@
+class TeacherRepository {
+  public createTeacher() {}
+}

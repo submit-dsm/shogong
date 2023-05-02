@@ -29,6 +29,9 @@ model Form {
   authorId String
   blocks Block[]
   student StudentsOnForms[]
+  isUnknown Boolean
+  studentTag String
+  isComplete Boolean
 }
 
 model StudentsOnForms {
