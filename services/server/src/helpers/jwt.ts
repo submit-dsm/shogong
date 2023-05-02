@@ -2,7 +2,7 @@ import { config } from "@/config";
 import jwt, { Algorithm } from "jsonwebtoken";
 
 interface OwnJwtPayload {
-  userId: number;
+  userId: string;
 }
 
 export class JWTHelper {

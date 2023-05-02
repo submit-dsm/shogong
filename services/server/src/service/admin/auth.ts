@@ -3,7 +3,7 @@ import { JWTHelper } from "@/helpers/jwt";
 import { AdminRepository } from "@/repository/admin";
 import { ErrorResponse } from "@/utils/error-res";
 import { comparePassword, generatePasswordHash } from "@/utils/hash";
-import { SignInReq, SignUpReq } from "@/apis/routes/user/auth/controller";
+import { AdminSignInReqBody, AdminSignUpReqBody } from "@package/api-type";
 
 export class AdminAuthService {
   private adminRepository;
@@ -14,9 +14,9 @@ export class AdminAuthService {
     this.JWTHelper = new JWTHelper();
   }
 
-  signup = async (userInfo: SignUpReq) => {
+  signup = async (userInfo: AdminSignUpReqBody) => {
     const alreadyRegisteredUser = await this.adminRepository.findByUserId(
-      userInfo.email
+      userInfo.id
     );
 
     if (alreadyRegisteredUser) {
@@ -30,20 +30,21 @@ export class AdminAuthService {
       password: hashedPassword,
     });
 
-    return userRecord;
+    return adminRecord;
   };
 
-  signIn = async (userInfo: SignInReq) => {
-    const user = await this.adminRepository.findByUserId(userInfo.email);
-    if (!user) {
+  signIn = async (userInfo: AdminSignInReqBody) => {
+    const admin = await this.adminRepository.findByUserId(userInfo.id);
+    if (!admin) {
       throw new ErrorResponse(commonError.unauthorized);
     }
-    const isValid = comparePassword(user.password, userInfo.password);
+
+    const isValid = comparePassword(admin.password, userInfo.password);
     if (!isValid) {
       throw new ErrorResponse(commonError.unauthorized);
     }
 
-    const tokens = this.JWTHelper.generateJwtTokens({ userId: user.id });
+    const tokens = this.JWTHelper.generateJwtTokens({ userId: admin.id });
     return tokens;
   };
 }
