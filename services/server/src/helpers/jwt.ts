@@ -1,5 +1,5 @@
 import { config } from "@/config";
-import jwt, { Algorithm } from "jsonwebtoken";
+import jwt, { Algorithm, VerifyErrors } from "jsonwebtoken";
 
 interface OwnJwtPayload {
   userId: string;
@@ -65,5 +65,17 @@ export class JWTHelper {
 
   decodeRefreshToken(token: string) {
     return this.decodeJwtToken(token, "REFRESH_TOKEN");
+  }
+
+  checkTokenExpiration(token: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      jwt.verify(token, this.secret, (err: VerifyErrors | null) => {
+        if (err) {
+          if (err.name === "TokenExpiredError") resolve(true);
+          else reject(err);
+        }
+        resolve(false);
+      });
+    });
   }
 }
