@@ -1,15 +1,15 @@
-export interface AdminSignUpReqBody {
+export type AdminSignUpReqBody = {
   name: string;
   password: string;
   id: string;
-}
+};
 
-export interface AdminSignInResBody {
+export type AdminSignInResBody = {
   access_token: string;
   refresh_token: string;
-}
+};
 
-export interface AdminSignInReqBody {
+export type AdminSignInReqBody = {
   id: string;
   password: string;
-}
+};
