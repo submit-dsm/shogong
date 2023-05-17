@@ -11,49 +11,55 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Student {
-  id   String @id
-  name String
-  grade Int
-  class_num Int
-  forms StudentsOnForms[]
-}
-
-model Form {
-  id    String   @id
-  title String
-  description String
-  startDate String
-  endDate String
-  author Admin @relation(fields: [authorId],references: [id])
-  authorId String
-  blocks Block[]
-  student StudentsOnForms[]
-  isUnknown Boolean
-  studentTag String
-  isComplete Boolean
-}
-
-model StudentsOnForms {
-  student Student @relation(fields: [studentId], references: [id])
-  studentId String
-  form Form @relation(fields: [formId], references: [id])
-  formId String
-  @@id([studentId, formId])
-}
+// model Student {
+//   id Int @id 
+//   classNum String
+//   name String
+//   password String
+//   grade String
+// }
 
 model Admin {
-  id String @id
+  id Int @id @default(autoincrement())
   name String
   password String
-  forms Form[]
+  myForm Form[]
 }
 
 model Block {
-  id String @id
+  id Int @id @default(autoincrement())
+  type String
+  question String
+  blockJsonString String
+  answer StudentAnswer[]
+}
+
+model Form {
+  id Int @id @default(autoincrement())
+  isUnknownForm Boolean
+  startTime DateTime
+  endTime DateTime
+  description String
+  studentTag String
   title String
-  blockType String
-  block String
+  students StudentForm[]
+  authorId Int
+  author Admin @relation(fields: [authorId], references: [id])
+}
+
+model StudentAnswer {
+  content String
+  time DateTime
+  studnetId String 
+  blockId Int 
+  block Block @relation(fields: [blockId],references: [id])
+  @@id([blockId,studnetId])
+}
+
+model StudentForm {
+  studentId String
+  isComplate String
+  formId Int
   form Form @relation(fields: [formId],references: [id])
-  formId String
+  @@id([studentId, formId])
 }
