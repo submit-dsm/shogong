@@ -1,6 +1,6 @@
 import { getAccessToken } from "@/utils/jwt";
 import { NextFunction, Request, Response } from "express";
-import FormService from "../../../service/form";
+import FormService from "./form.service";
 import { JWTHelper } from "@/helpers/jwt";
 import {
   CreateFormRequestDto,
