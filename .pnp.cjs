@@ -818,6 +818,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.16.0"],\
             ["@types/uuid", "npm:9.0.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.42"],\
+            ["axios", "npm:1.4.0"],\
             ["bcrypt", "npm:5.1.0"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.0.3"],\
@@ -1773,6 +1774,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axios-npm-1.3.6-59e004d5b8-c90497ebf7.zip/node_modules/axios/",\
           "packageDependencies": [\
             ["axios", "npm:1.3.6"],\
+            ["follow-redirects", "virtual:59e004d5b84a97427dda0ad4249f0c81b0fbb405c29f984ec81bc2a9dcb6d994af354e28948d3ac063760130fb01df1f1de493b93519a036c255b7630d7f918f#npm:1.15.2"],\
+            ["form-data", "npm:4.0.0"],\
+            ["proxy-from-env", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.4.0", {\
+          "packageLocation": "./.yarn/cache/axios-npm-1.4.0-4d7ce8ca3e-7fb6a4313b.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:1.4.0"],\
             ["follow-redirects", "virtual:59e004d5b84a97427dda0ad4249f0c81b0fbb405c29f984ec81bc2a9dcb6d994af354e28948d3ac063760130fb01df1f1de493b93519a036c255b7630d7f918f#npm:1.15.2"],\
             ["form-data", "npm:4.0.0"],\
             ["proxy-from-env", "npm:1.1.0"]\
