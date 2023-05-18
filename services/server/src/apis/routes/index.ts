@@ -1,9 +1,7 @@
 import { Router } from "express";
-
+import { admin } from "./admin";
 const router = Router();
 
-router.get("/", (req, res) => {
-  return res.send("hi");
-});
+router.use("/admin", admin);
 
 export default router;

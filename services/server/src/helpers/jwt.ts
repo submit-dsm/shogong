@@ -56,7 +56,10 @@ export class JWTHelper {
       algorithms: [this.algorithm],
       subject,
     });
-    return decodedToken;
+    return decodedToken as unknown as Record<
+      "userId" | "iat" | "exp" | "sub",
+      string
+    >;
   }
 
   decodeAccessToken(token: string) {

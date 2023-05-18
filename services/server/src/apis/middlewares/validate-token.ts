@@ -23,7 +23,7 @@ const validateToken = async (
 
     // token 만료
     if (isTokenExpired) {
-      return;
+      throw new ErrorResponse(commonError.unauthorized);
     }
 
     next();
