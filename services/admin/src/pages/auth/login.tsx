@@ -8,7 +8,7 @@ const LoginPage: NextPage = () => {
       <_Main>
         <Image src={background} alt={""} fill priority />
         <_Form>
-          <_Legend>dddd</_Legend>
+          <_Legend>로그인</_Legend>
         </_Form>
       </_Main>
     </>
@@ -29,15 +29,18 @@ const _Form = styled.form`
   height: 630px;
 
   background-color: ${({ theme }) => theme.color.white};
-  padding: 80px 64px 64px 115px;
+  padding: 80px 64px 115px 64px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
-const _Legend = styled.div`
-  font: ${({ theme }) => theme.font.Heading1};
-  width: 400px;
-  height: 400px;
-  background-color: ${({ theme }) => theme.color.gray300};
+const _Legend = styled.legend`
+  font: ${({ theme }) => theme.font.Heading4};
+  color: ${({ theme }) => theme.color.black};
+  text-align: center;
+`;
+const _Layout = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
