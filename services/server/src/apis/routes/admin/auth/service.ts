@@ -45,6 +45,7 @@ export class AdminAuthService {
     }
 
     const tokens = this.JWTHelper.generateJwtTokens({ userId: admin.id });
+    console.log(tokens);
     return tokens;
   };
 }

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
 import { commonError } from "../../constants/error";
-import ErrorResponse from "../../utils/error-res";
+import { ErrorResponse } from "../../utils/error-res";
 
 const createErrorInfoDevelopment = (err: ErrorResponse) => {
   return {
@@ -41,6 +41,7 @@ const errorHandler = (
   }
 
   res.status(errorInfo.statusCode).json(errorInfo);
+  console.log(errorInfo);
 };
 
 export default errorHandler;

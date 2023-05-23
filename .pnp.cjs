@@ -817,6 +817,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.16.0"],\
             ["@types/uuid", "npm:9.0.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.42"],\
+            ["axios", "npm:1.4.0"],\
             ["bcrypt", "npm:5.1.0"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.0.3"],\
@@ -826,6 +827,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemon", "npm:2.0.22"],\
             ["prisma", "npm:4.13.0"],\
             ["ts-node", "virtual:50b014b37d29c7510f82a6e7e233a2c2d6e24ab52c862940a38eb9fd70e4d55c4d0d6cca7f05295daea28d12fb0a37c245fb6123735e1fd98466ecead4731762#npm:10.9.1"],\
+            ["tsconfig-paths", "npm:4.2.0"],\
             ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
@@ -1771,6 +1773,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axios-npm-1.3.6-59e004d5b8-c90497ebf7.zip/node_modules/axios/",\
           "packageDependencies": [\
             ["axios", "npm:1.3.6"],\
+            ["follow-redirects", "virtual:59e004d5b84a97427dda0ad4249f0c81b0fbb405c29f984ec81bc2a9dcb6d994af354e28948d3ac063760130fb01df1f1de493b93519a036c255b7630d7f918f#npm:1.15.2"],\
+            ["form-data", "npm:4.0.0"],\
+            ["proxy-from-env", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.4.0", {\
+          "packageLocation": "./.yarn/cache/axios-npm-1.4.0-4d7ce8ca3e-7fb6a4313b.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:1.4.0"],\
             ["follow-redirects", "virtual:59e004d5b84a97427dda0ad4249f0c81b0fbb405c29f984ec81bc2a9dcb6d994af354e28948d3ac063760130fb01df1f1de493b93519a036c255b7630d7f918f#npm:1.15.2"],\
             ["form-data", "npm:4.0.0"],\
             ["proxy-from-env", "npm:1.1.0"]\
@@ -4494,6 +4506,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimist", "npm:1.2.8"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:2.2.3", {\
+          "packageLocation": "./.yarn/cache/json5-npm-2.2.3-9962c55073-2a7436a933.zip/node_modules/json5/",\
+          "packageDependencies": [\
+            ["json5", "npm:2.2.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jsonwebtoken", [\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/jsonwebtoken-npm-9.0.0-36fd1594c0-b9181cecf9.zip/node_modules/jsonwebtoken/",\
+          "packageDependencies": [\
+            ["jsonwebtoken", "npm:9.0.0"],\
+            ["jws", "npm:3.2.2"],\
+            ["lodash", "npm:4.17.21"],\
+            ["ms", "npm:2.1.3"],\
+            ["semver", "npm:7.5.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["jsonwebtoken", [\
@@ -6576,6 +6608,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tsconfig-paths", "npm:3.14.2"],\
             ["@types/json5", "npm:0.0.29"],\
             ["json5", "npm:1.0.2"],\
+            ["minimist", "npm:1.2.8"],\
+            ["strip-bom", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:4.2.0", {\
+          "packageLocation": "./.yarn/cache/tsconfig-paths-npm-4.2.0-ac1edf8677-28c5f7bbbc.zip/node_modules/tsconfig-paths/",\
+          "packageDependencies": [\
+            ["tsconfig-paths", "npm:4.2.0"],\
+            ["json5", "npm:2.2.3"],\
             ["minimist", "npm:1.2.8"],\
             ["strip-bom", "npm:3.0.0"]\
           ],\

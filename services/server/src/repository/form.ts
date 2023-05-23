@@ -1,5 +1,4 @@
 import * as db from "@prisma";
-import { v4 } from "uuid";
 
 type FormWithoutId = Omit<db.Form, "id">;
 
@@ -8,7 +7,7 @@ class FormRepository {
     return await db.client.form.findMany();
   }
 
-  public async findOne(formId: string) {
+  public async findOne(formId: number) {
     return await db.client.form.findUnique({
       where: {
         id: formId,
@@ -16,24 +15,31 @@ class FormRepository {
     });
   }
 
-  public async create(formParam: FormWithoutId) {
-    const randomFormId = v4();
+  public async create(formParam: FormWithoutId, formId: number) {
     return await db.client.form.create({
-      data: { id: randomFormId, ...formParam },
+      data: { id: formId, ...formParam },
     });
   }
 
-  public async update(formId: string, formParam: Partial<FormWithoutId>) {
+  public async update(formId: number, formParam: Partial<FormWithoutId>) {
     return await db.client.form.update({
       where: { id: formId },
       data: formParam,
     });
   }
 
-  public async delete(formId: string) {
+  public async delete(formId: number) {
     return await db.client.form.delete({
       where: {
         id: formId,
+      },
+    });
+  }
+
+  public async findByStudentId(studentId: string) {
+    return await db.client.studentForm.findFirst({
+      where: {
+        studentId: studentId,
       },
     });
   }

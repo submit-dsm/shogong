@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "NODE_ENV=production node dist/app.js",
-    "dev": "nodemon --exec ts-node src/app.ts",
+    "dev": "nodemon --exec NODE_ENV=development ts-node -r tsconfig-paths/register src/app.ts",
     "db:pull": "yarn pnpify prisma db pull",
     "db:push": "yarn pnpify prisma db push",
     "prisma:generate": "yarn pnpify prisma generate"
@@ -13,6 +13,7 @@
   "dependencies": {
     "@prisma/client": "4.13.0",
     "@yarnpkg/pnpify": "^4.0.0-rc.42",
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -32,6 +33,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "prisma": "4.13.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0"
   }
 }
