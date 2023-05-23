@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import { ChangeEvent } from "react";
 
-export interface TextInputProps {
+export interface ITextInputProps {
   onInput?: (e: ChangeEvent<HTMLInputElement>) => void;
   name: string;
   label: string;
   type: string;
 }
-export const TextInput = ({ label, ...props }: TextInputProps) => {
+export const TextInput = ({ label, ...props }: ITextInputProps) => {
   return (
     <>
       <_Layout>

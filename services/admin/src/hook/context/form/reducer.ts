@@ -9,8 +9,8 @@ export type Action =
   | { type: "CHECKBOX" }
   | { type: "FILE" }
   | { type: "CHANGE"; question: string }
-  | { type: "ADD_CHECKBOX"; question: string }
-  | { type: "DELETE_CHECKBOX"; idx: number }
+  | { type: "ADD_OPTIONS"; question: string }
+  | { type: "DELETE_OPTIONS"; idx: number }
   | { type: "ADD" };
 
 export type SampleDispatch = Dispatch<Action>;
@@ -96,7 +96,7 @@ export const reducer = (state: State, action: Action): State => {
           i === state.index ? { ...e, question: action.question } : e
         ),
       };
-    case "ADD_CHECKBOX":
+    case "ADD_OPTIONS":
       return {
         ...state,
         blocks: state.blocks.map((e, i) =>
@@ -111,7 +111,7 @@ export const reducer = (state: State, action: Action): State => {
             : e
         ),
       };
-    case "DELETE_CHECKBOX":
+    case "DELETE_OPTIONS":
       return {
         ...state,
         blocks: state.blocks.map((e, i) =>
