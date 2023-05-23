@@ -1,3 +1,4 @@
+import { FormContextProvider } from "@/hook/context";
 import styled from "@emotion/styled";
 
 export interface SurveyProps {
@@ -6,7 +7,9 @@ export interface SurveyProps {
 export const Survey = ({ type }: SurveyProps) => {
   return (
     <>
-      <_Layout>{}</_Layout>
+      <FormContextProvider>
+        <_Layout>{}</_Layout>
+      </FormContextProvider>
     </>
   );
 };

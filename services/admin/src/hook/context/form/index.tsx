@@ -13,8 +13,8 @@ export const FormValueContext = createContext<State>({
     },
   ],
 });
-
 export const FormActionContext = createContext<SampleDispatch>(() => null);
+
 export const FormContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
     index: 0,
