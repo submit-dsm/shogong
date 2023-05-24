@@ -8,7 +8,7 @@ export type GetFormListResponse = WithId<{
   isUnknown: boolean;
   studentTag: string;
   author: string;
-}>;
+}>[];
 
 export type GetFormDetailResponse = {
   title: string;

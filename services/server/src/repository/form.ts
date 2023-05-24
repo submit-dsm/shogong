@@ -1,4 +1,4 @@
-import * as db from "@prisma";
+import * as db from "@package/database"
 
 type FormWithoutId = Omit<db.Form, "id">;
 
@@ -37,11 +37,54 @@ class FormRepository {
   }
 
   public async findByStudentId(studentId: string) {
-    return await db.client.studentForm.findFirst({
+    return await db.client.form.findMany({
       where: {
-        studentId: studentId,
+        students: {
+          some: {
+            studentId: studentId,
+          },
+        },
+      },
+      include: {
+        students: true,
       },
     });
+  }
+  public async createForm(formId: number, answer: any[]) {
+    return await db.client.form.create({
+      data: {
+        description: "",
+        endTime: "",
+        isUnknownForm: false,
+        studentTag: "",
+        title: "",
+        authorId: 1,
+        blocks:{
+          createMany:{
+            data:[{}]
+          }
+        }
+        students: {
+          createMany: {
+            data: [{ studentId: "" }],
+          },
+        },
+      },
+    });
+  }
+  public async createAnswer (formId: number,answer: any[]){
+    return await db.client.studentAnswer.create({
+      data:{
+        studentId:"",
+        content:"",
+        blockId: 1,
+        formId:1
+      },
+      include:{
+        block:true,
+        form:true
+      }
+    })
   }
 }
 

@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id Int @id @default(autoincrement())
+  name String
+  password String
+  myForm Form[]
+}
+
+model Block {
+  id Int @id @default(autoincrement())
+  type String
+  question String
+  blockJsonString String
+  answer StudentAnswer[]
+  formId Int
+  form Form @relation(fields: [formId], references: [id])
+}
+
+model Form {
+  id Int @id @default(autoincrement())
+  startTime DateTime @default(now())
+  endTime DateTime
+  isUnknownForm Boolean
+  description String
+  studentTag String
+  title String
+
+  students StudentForm[]
+  authorId Int
+
+  blocks Block[]
+
+  answers StudentAnswer[]
+
+  author Admin @relation(fields: [authorId], references: [id])
+}
+
+model StudentAnswer {
+  content String
+  time DateTime @default(now())
+  studentId String 
+
+  blockId Int 
+  block Block @relation(fields: [blockId],references: [id])
+
+  formId Int
+  form Form @relation(fields: [formId],references: [id])
+
+  @@id([blockId,studentId])
+}
+
+model StudentForm {
+  studentId String
+  isComplate Boolean? @default(false)
+  formId Int
+  form Form @relation(fields: [formId],references: [id])
+  @@id([studentId, formId])
+}

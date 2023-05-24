@@ -1,4 +1,7 @@
 {
   "name": "@package/api-type",
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.0",
+  "dependencies": {
+    "@package/database": "workspace:^"
+  }
 }

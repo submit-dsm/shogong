@@ -1,15 +1,8 @@
 import { Block } from "../../common/block";
+import * as db from "@package/database";
 
-export type CreateFormRequestDto = {
-  title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  isUnknown: boolean;
-  studentTag: string;
-  blocks: Block[];
-};
+export type CreateFormReqBody = Omit<db.Form, "id" | "startTime">;
 
-export type UpdateFormRequestDto = Partial<CreateFormRequestDto>;
+export type UpdateFormReqBody = Partial<CreateFormReqBody>;
 
-export type EnableFormRequestDto = { enable: boolean };
+export type EnableFormReqBody = { enable: boolean };

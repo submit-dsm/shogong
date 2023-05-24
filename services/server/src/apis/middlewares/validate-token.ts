@@ -19,7 +19,10 @@ const validateToken = async (
     }
 
     const jwtHelper = new JWTHelper();
-    const isTokenExpired = await jwtHelper.checkTokenExpiration(accessToken);
+    const isTokenExpired = await jwtHelper.checkTokenExpiration(
+      accessToken,
+      "submit"
+    );
 
     // token 만료
     if (isTokenExpired) {

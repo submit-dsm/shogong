@@ -16,10 +16,10 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
-      "@prisma": ["./prisma/index.ts"],
+      "@prisma": ["prisma/index.ts"],
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "./prisma/index.ts"],
+  "include": ["**/*.ts", "prisma/index.ts"],
   "exclude": ["./dist"]
 }

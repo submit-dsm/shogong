@@ -1,4 +1,4 @@
-import { AdminAuthService } from "@/apis/routes/admin/auth/auth.service";
+import { AdminAuthService } from "@/apis/routes/admin/auth/service";
 import {
   AdminSignInReqBody,
   AdminSignUpReqBody,

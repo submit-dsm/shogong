@@ -1,11 +1,7 @@
 import { getAccessToken } from "@/utils/jwt";
 import { NextFunction, Request, Response } from "express";
-import FormService from "./form.service";
+import FormService from "./service";
 import { JWTHelper } from "@/helpers/jwt";
-import {
-  CreateFormRequestDto,
-  EnableFormRequestDto,
-} from "@package/api-type/admin";
 export const handleGetForm = async (
   _req: Request,
   res: Response,

@@ -10,6 +10,8 @@ export class JWTHelper {
 
   private secret: string;
 
+  private xSecret: string;
+
   private accessExpiresInSeconds: number;
 
   private refreshExpiresInSeconds: number;
@@ -19,6 +21,7 @@ export class JWTHelper {
     this.secret = config.jwt.secret;
     this.accessExpiresInSeconds = config.jwt.expire.access * 3600;
     this.refreshExpiresInSeconds = config.jwt.expire.refresh * 3600;
+    this.xSecret = config.jwt.xSecret;
   }
 
   generateAccessToken({ userId }: OwnJwtPayload) {
@@ -62,6 +65,21 @@ export class JWTHelper {
     >;
   }
 
+  decodeXJwtToken(xToken: string, subject?: string) {
+    const decodedXToken = jwt.verify(xToken, this.xSecret, {
+      algorithms: [this.algorithm],
+      subject,
+    });
+    return decodedXToken as unknown as Record<
+      "sub" | "role" | "exp" | "type",
+      string
+    > & { authorities: string[] };
+  }
+
+  decodeXAccessToken(xToken: string) {
+    return this.decodeXJwtToken(xToken, "ACCESS_TOKEN");
+  }
+
   decodeAccessToken(token: string) {
     return this.decodeJwtToken(token, "ACCESS_TOKEN") as OwnJwtPayload;
   }
@@ -70,15 +88,22 @@ export class JWTHelper {
     return this.decodeJwtToken(token, "REFRESH_TOKEN");
   }
 
-  checkTokenExpiration(token: string): Promise<boolean> {
+  checkTokenExpiration(
+    token: string,
+    type: "xquare" | "submit" = "submit"
+  ): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      jwt.verify(token, this.secret, (err: VerifyErrors | null) => {
-        if (err) {
-          if (err.name === "TokenExpiredError") resolve(true);
-          else reject(err);
+      jwt.verify(
+        token,
+        type === "submit" ? this.secret : this.xSecret,
+        (err: VerifyErrors | null) => {
+          if (err) {
+            if (err.name === "TokenExpiredError") resolve(true);
+            else reject(err);
+          }
+          resolve(false);
         }
-        resolve(false);
-      });
+      );
     });
   }
 }

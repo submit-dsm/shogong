@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma";
+import { PrismaClient } from "prisma";
 import { AdminSignUpReqBody } from "@package/api-type";
 
 const prisma = new PrismaClient();
