@@ -14,5 +14,9 @@ export const CheckButton = (props: ICheckButton) => {
     </>
   );
 };
-const _Input = styled.input``;
-const _Label = styled.label``;
+const _Input = styled.input`
+  width: 22px;
+  height: 22px;
+
+  accent-color: ${({ theme }) => theme.color.main500};
+`;
