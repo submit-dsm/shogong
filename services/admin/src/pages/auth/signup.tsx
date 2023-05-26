@@ -6,6 +6,7 @@ import { AuthTemplate } from "@/components/auth";
 import { InitialStateType, initialState } from "@/util/auth";
 import { useRouter } from "next/router";
 import { SubmitButton } from "@/components/input/submit-button";
+import axios from "axios";
 const LoginPage: NextPage = () => {
   const { state, onInput } = useAuth<InitialStateType & { name: string }>({
     ...initialState,
@@ -14,7 +15,12 @@ const LoginPage: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <AuthTemplate legend="로그인" onSubmit={() => {}}>
+      <AuthTemplate
+        legend="로그인"
+        onSubmit={() => {
+          axios.post("http://localhost:8080");
+        }}
+      >
         <TextInput
           {...{ onInput }}
           name={"name"}
