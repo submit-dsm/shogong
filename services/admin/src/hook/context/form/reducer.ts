@@ -3,93 +3,22 @@ import { type CreateFormRequestDto } from "@package/api-type";
 
 export type State = Pick<CreateFormRequestDto, "blocks"> & { index: number };
 export type Action =
-  | { type: "SHORT_ANSWER" }
-  | { type: "LONG_ANSWER" }
-  | { type: "RADIO" }
-  | { type: "CHECKBOX" }
-  | { type: "FILE" }
-  | { type: "CHANGE"; question: string }
+  | {
+      type: "CHANGE";
+      block: "SHORT_ANSWER" | "FILE" | "LONG_ANSWER" | "RADIO" | "CHECKBOX";
+    }
+  | { type: "WRITE"; question: string }
   | { type: "ADD_OPTIONS"; question: string }
   | { type: "DELETE_OPTIONS"; idx: number }
-  | { type: "ADD" };
+  | { type: "ADD" }
+  | { type: "DELETE"; idx: number }
+  | { type: "INDEX"; idx: number };
 
 export type SampleDispatch = Dispatch<Action>;
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "SHORT_ANSWER":
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "SHORT_ANSWER",
-            question: "",
-            isEssential: false,
-            answerParams: "",
-          },
-        ],
-      };
-    case "LONG_ANSWER":
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "LONG_ANSWER",
-            question: "",
-            isEssential: false,
-            answerParams: "",
-          },
-        ],
-      };
-    case "RADIO":
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "RADIO",
-            question: "",
-            isEssential: false,
-            questionParams: [],
-            answerParams: "",
-          },
-        ],
-      };
-    case "CHECKBOX":
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "CHECKBOX",
-            question: "",
-            isEssential: false,
-            questionParams: [],
-            answerParams: [],
-          },
-        ],
-      };
-    case "FILE":
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "FILE",
-            question: "",
-            isEssential: false,
-            answerParams: [],
-          },
-        ],
-      };
-    case "CHANGE":
+    case "WRITE":
       return {
         ...state,
         blocks: state.blocks.map((e, i) =>
@@ -138,6 +67,32 @@ export const reducer = (state: State, action: Action): State => {
             answerParams: "",
           },
         ],
+      };
+    case "DELETE":
+      return {
+        index: 0,
+        blocks: state.blocks.filter((e, i) => i !== action.idx),
+      };
+    case "CHANGE":
+      return {
+        ...state,
+        blocks: state.blocks.map((e, i) =>
+          i === state.index
+            ? {
+                id: "",
+                type: action.block,
+                question: "",
+                isEssential: false,
+                questionParams: [],
+                answerParams: [],
+              }
+            : e
+        ),
+      };
+    case "INDEX":
+      return {
+        ...state,
+        index: action.idx,
       };
     default:
       return state;
