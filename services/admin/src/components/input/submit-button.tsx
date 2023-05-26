@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export interface ISubmitButtonProps {
   value: string;
-  onClick: () => void;
 }
 
 export const SubmitButton = (props: ISubmitButtonProps) => {

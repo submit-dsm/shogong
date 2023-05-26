@@ -22,15 +22,17 @@ export const _Input = styled.input`
 
   color: ${({ theme }) => theme.color.black};
   font: ${({ theme }) => theme.font.Body1};
-
-  padding-left: 20px;
+  border: none;
+  padding: 0 20px;
 
   ::placeholder {
     color: ${({ theme }) => theme.color.gray700};
   }
+  :focus {
+    border: none;
+  }
 `;
 const _TextInput = styled(_Input)`
-  padding-right: 20px;
   border: 1px solid ${({ theme }) => theme.color.gray700};
 `;
 export const _Label = styled.label`

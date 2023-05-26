@@ -4,11 +4,19 @@ import { Password } from "@/components/input/password";
 import { useAuth } from "@/hook/useAuth";
 import { AuthTemplate } from "@/components/auth";
 import { initialState, type InitialStateType } from "@/util/auth";
+import { useRouter } from "next/router";
+import { SubmitButton } from "@/components/input/submit-button";
 const LoginPage: NextPage = () => {
   const { state, onInput } = useAuth<InitialStateType>(initialState);
+  const router = useRouter();
   return (
     <>
-      <AuthTemplate legend="로그인" onSubmit={() => {}}>
+      <AuthTemplate
+        legend="로그인"
+        onSubmit={() => {
+          console.log("asdf");
+        }}
+      >
         <TextInput
           {...{ onInput }}
           name={"account_id"}
@@ -21,6 +29,7 @@ const LoginPage: NextPage = () => {
           label={"비밀번호"}
           value={state.password}
         />
+        <SubmitButton value={"로그인"} />
       </AuthTemplate>
     </>
   );

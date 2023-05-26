@@ -25,7 +25,16 @@ export const Password = ({ label, ...props }: IPasswordProps) => {
 };
 const _InputLayout = styled.div`
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: 20px;
+  border: 1px solid ${({ theme }) => theme.color.gray700};
+  > input {
+    flex-grow: 1;
+    :focus {
+      border: none;
+    }
+  }
 `;
