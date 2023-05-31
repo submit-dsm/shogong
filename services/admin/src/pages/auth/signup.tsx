@@ -16,12 +16,12 @@ const LoginPage: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <AuthTemplate legend="로그인">
+      <AuthTemplate legend="회원가입">
         <TextInput
           {...{ onInput }}
           name={"name"}
           label={"이름"}
-          value={state.account_id}
+          value={state.name}
         />
         <TextInput
           {...{ onInput }}
@@ -35,10 +35,15 @@ const LoginPage: NextPage = () => {
           label={"비밀번호"}
           value={state.password}
         />
-        <SubmitButton value={"회원가입"} onClick={() => {}} />
-        <Button
+        <SubmitButton
+          value={"회원가입"}
           onClick={() => {
             signup(state);
+            router.push("/auth/login");
+          }}
+        />
+        <Button
+          onClick={() => {
             router.push("/auth/login");
           }}
           value={"로그인"}
