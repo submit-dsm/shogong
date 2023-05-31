@@ -12,16 +12,11 @@ datasource db {
 }
 
 model Admin {
-<<<<<<< HEAD
-  id       Int    @id @default(autoincrement())
-  name     String
-=======
-  id Int @id @default(autoincrement())
+  id         Int    @id @default(autoincrement())
+  name       String
   account_id String @unique
-  name String
->>>>>>> 3ebbc2a6a6890b88465925397663606c617d10a7
-  password String
-  myForm   Form[]
+  password   String
+  myForm     Form[]
 }
 
 model Block {
@@ -35,34 +30,28 @@ model Block {
 }
 
 model Form {
-  id            Int      @id @default(autoincrement())
-  startTime     DateTime @default(now())
+  id            Int             @id @default(autoincrement())
+  startTime     DateTime        @default(now())
   endTime       DateTime
   isUnknownForm Boolean
   description   String
   studentTag    String
   title         String
-
-  students StudentForm[]
-  authorId Int
-
-  blocks Block[]
-
-  answers StudentAnswer[]
-
-  author Admin @relation(fields: [authorId], references: [id])
+  students      StudentForm[]
+  authorId      Int
+  blocks        Block[]
+  answers       StudentAnswer[]
+  author        Admin           @relation(fields: [authorId], references: [id])
 }
 
 model StudentAnswer {
   content   String
   time      DateTime @default(now())
   studentId String
-
-  blockId Int
-  block   Block @relation(fields: [blockId], references: [id])
-
-  formId Int
-  form   Form @relation(fields: [formId], references: [id])
+  blockId   Int
+  block     Block    @relation(fields: [blockId], references: [id])
+  formId    Int
+  form      Form     @relation(fields: [formId], references: [id])
 
   @@id([blockId, studentId])
 }
