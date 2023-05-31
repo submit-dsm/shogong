@@ -1,4 +1,4 @@
-import * as db from "@package/database"
+import * as db from "@package/database";
 
 type FormWithoutId = Omit<db.Form, "id">;
 
@@ -50,41 +50,41 @@ class FormRepository {
       },
     });
   }
-  public async createForm(formId: number, answer: any[]) {
-    return await db.client.form.create({
+  // public async createForm(formId: number, answer: any[]) {
+  //   return await db.client.form.create({
+  //     data: {
+  //       description: "",
+  //       endTime: "",
+  //       isUnknownForm: false,
+  //       studentTag: "",
+  //       title: "",
+  //       authorId: 1,
+  //       blocks: {
+  //         createMany: {
+  //           data: [{}],
+  //         },
+  //       },
+  //       students: {
+  //         createMany: {
+  //           data: [{ studentId: "" }],
+  //         },
+  //       },
+  //     },
+  //   });
+  // }
+  public async createAnswer(formId: number, answer: any[]) {
+    return await db.client.studentAnswer.create({
       data: {
-        description: "",
-        endTime: "",
-        isUnknownForm: false,
-        studentTag: "",
-        title: "",
-        authorId: 1,
-        blocks:{
-          createMany:{
-            data:[{}]
-          }
-        }
-        students: {
-          createMany: {
-            data: [{ studentId: "" }],
-          },
-        },
+        studentId: "",
+        content: "",
+        blockId: 1,
+        formId: 1,
+      },
+      include: {
+        block: true,
+        form: true,
       },
     });
-  }
-  public async createAnswer (formId: number,answer: any[]){
-    return await db.client.studentAnswer.create({
-      data:{
-        studentId:"",
-        content:"",
-        blockId: 1,
-        formId:1
-      },
-      include:{
-        block:true,
-        form:true
-      }
-    })
   }
 }
 

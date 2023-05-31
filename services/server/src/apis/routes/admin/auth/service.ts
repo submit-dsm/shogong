@@ -44,7 +44,9 @@ export class AdminAuthService {
       throw new ErrorResponse(commonError.unauthorized);
     }
 
-    const tokens = this.JWTHelper.generateJwtTokens({ userId: admin.id });
+    const tokens = this.JWTHelper.generateJwtTokens({
+      userId: String(admin.id),
+    });
     console.log(tokens);
     return tokens;
   };
