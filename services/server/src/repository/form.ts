@@ -1,4 +1,5 @@
-import * as db from "@package/database"
+import * as db from "@package/database";
+import { GetAssignFormsResBody } from "@package/api-type";
 
 type FormWithoutId = Omit<db.Form, "id">;
 
@@ -7,10 +8,32 @@ class FormRepository {
     return await db.client.form.findMany();
   }
 
-  public async findOne(formId: number) {
+  public async findDetail(formId: number) {
     return await db.client.form.findUnique({
       where: {
         id: formId,
+      },
+      select: {
+        blocks: {
+          select: {
+            blockJsonString: true,
+            question: true,
+            id: true,
+            type: true,
+          },
+        },
+        author: {
+          select: {
+            name: true,
+          },
+        },
+        description: true,
+        endTime: true,
+        id: true,
+        isUnknownForm: true,
+        studentTag: true,
+        title: true,
+        startTime: true,
       },
     });
   }
@@ -45,47 +68,63 @@ class FormRepository {
           },
         },
       },
-      include: {
-        students: true,
-      },
-    });
-  }
-  public async createForm(formId: number, answer: any[]) {
-    return await db.client.form.create({
-      data: {
-        description: "",
-        endTime: "",
-        isUnknownForm: false,
-        studentTag: "",
-        title: "",
-        authorId: 1,
-        blocks:{
-          createMany:{
-            data:[{}]
-          }
-        }
-        students: {
-          createMany: {
-            data: [{ studentId: "" }],
+      select: {
+        title: true,
+        studentTag: true,
+        isUnknownForm: true,
+        startTime: true,
+        endTime: true,
+        id: true,
+        author: {
+          select: {
+            name: true,
           },
         },
       },
     });
   }
-  public async createAnswer (formId: number,answer: any[]){
-    return await db.client.studentAnswer.create({
-      data:{
-        studentId:"",
-        content:"",
-        blockId: 1,
-        formId:1
-      },
-      include:{
-        block:true,
-        form:true
-      }
-    })
+
+  public async createAnswer(answerData: Omit<db.StudentAnswer, "time">[]) {
+    return await db.client.studentAnswer.createMany({
+      data: answerData,
+    });
   }
+  // public async createForm(formId: number, answer: any[]) {
+  //   return await db.client.form.create({
+  //     data: {
+  //       description: "",
+  //       endTime: "",
+  //       isUnknownForm: false,
+  //       studentTag: "",
+  //       title: "",
+  //       authorId: 1,
+  //       blocks:{
+  //         createMany:{
+  //           data:[{}]
+  //         }
+  //       }
+  //       students: {
+  //         createMany: {
+  //           data: [{ studentId: "" }],
+  //         },
+  //       },
+  //     },
+  //   });
+  // }
+  // public async createAnswer (formId: number,answer: any[]){
+  //   return await db.client.studentAnswer.create({
+  //     data:{
+  //       studentId:"",
+  //       content:"",
+  //       blockId: 1,
+  //       formId:1
+  //     },
+  //     include:{
+  //       block:true,
+  //       form:true
+  //     }
+  //   })
+  // }
 }
 
 export default FormRepository;

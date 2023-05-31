@@ -4,11 +4,15 @@ import { ErrorResponse } from "@/utils/error-res";
 import { getAccessToken } from "@/utils/jwt";
 import { NextFunction, Request, Response } from "express";
 import { FormService } from "./service";
-import { GetFormListResponse } from "../../../../../../../packages/api-type";
+import {
+  CreateAnswerReqBody,
+  GetAssignFormsResBody,
+  GetFormDetailResBody,
+} from "@package/api-type/user/form";
 
 export const handleGetApplyForm = async (
   req: Request,
-  res: Response,
+  res: Response<GetAssignFormsResBody>,
   next: NextFunction
 ): Promise<void> => {
   try {
@@ -25,28 +29,31 @@ export const handleGetApplyForm = async (
 
 export const handleGetFormDetail = async (
   req: Request,
-  res: Response,
+  res: Response<GetFormDetailResBody>,
   next: NextFunction
 ) => {
   try {
     const formService = new FormService();
-    const id = +req.params.id;
-    if (isNaN(id)) throw new ErrorResponse(commonError.badRequest);
-    const formDetail = await formService.getFormDetail(id);
-    if (!formDetail) throw new ErrorResponse(commonError.notFound);
+    const formDetail = await formService.getFormDetail(req.params.id);
     res.send(formDetail);
   } catch (e) {
     next(e);
   }
 };
 
-export const handleSubmitForm = (
-  req: Request,
+export const handleSubmitForm = async (
+  req: Request<{ id: string }, unknown, CreateAnswerReqBody>,
   res: Response,
   next: NextFunction
 ) => {
   try {
+    const jwtHelper = new JWTHelper();
     const formService = new FormService();
+    const token = getAccessToken(req.headers.authorization);
+    const tokenData = jwtHelper.decodeXJwtToken(token);
+
+    await formService.postFormAnswer(req.params.id, tokenData.sub, req.body);
+    res.status(201).send();
   } catch (e) {
     next(e);
   }
