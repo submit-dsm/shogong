@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export interface ISubmitButtonProps {
   value: string;
+  onClick: () => void;
 }
 
 export const SubmitButton = (props: ISubmitButtonProps) => {
@@ -21,4 +22,9 @@ const _Submit = styled.input`
 
   font: ${({ theme }) => theme.font.Body3};
   border: none;
+
+  cursor: pointer;
+  :hover {
+    background-color: ${({ theme }) => theme.color.main100};
+  }
 `;

@@ -6,18 +6,15 @@ import { AuthTemplate } from "@/components/auth";
 import { initialState, type InitialStateType } from "@/util/auth";
 import { useRouter } from "next/router";
 import { SubmitButton } from "@/components/input/submit-button";
-import axios from "axios";
+import { Button } from "@/components/button";
+import { login } from "@/api/auth/login";
+import { setStorage } from "@/util/storageSet";
 const LoginPage: NextPage = () => {
   const { state, onInput } = useAuth<InitialStateType>(initialState);
   const router = useRouter();
   return (
     <>
-      <AuthTemplate
-        legend="로그인"
-        onSubmit={() => {
-          axios.post("http://localhost:8080/", {});
-        }}
-      >
+      <AuthTemplate legend="로그인">
         <TextInput
           {...{ onInput }}
           name={"account_id"}
@@ -30,7 +27,19 @@ const LoginPage: NextPage = () => {
           label={"비밀번호"}
           value={state.password}
         />
-        <SubmitButton value={"로그인"} />
+        <SubmitButton
+          value={"로그인"}
+          onClick={() => {
+            login(state).then((res) => setStorage(res.accessToken));
+            router.push("/");
+          }}
+        />
+        <Button
+          onClick={() => {
+            router.push("/auth/signup");
+          }}
+          value={"회원가입"}
+        />
       </AuthTemplate>
     </>
   );

@@ -14,6 +14,7 @@ export const Password = ({ label, ...props }: IPasswordProps) => {
             id={props.name}
             {...props}
             type={state ? "text" : "password"}
+            required
           />
           <div onClick={() => setState((prev) => !prev)}>
             <SeePasswordIcon />
@@ -29,12 +30,11 @@ const _InputLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding-right: 20px;
   border: 1px solid ${({ theme }) => theme.color.gray700};
+
   > input {
     flex-grow: 1;
-    :focus {
-      border: none;
-    }
   }
 `;

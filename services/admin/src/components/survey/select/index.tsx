@@ -45,49 +45,58 @@ const Spin = (x: number, y: number) => keyframes`
 `;
 const _SelectList = styled.div<{ state: boolean }>`
   visibility: ${(props) => (props.state ? "visible" : "hidden")};
-  width: auto;
-  height: auto;
+
   box-shadow: 1px 1px 10px 5px rgba(231, 95, 176, 0.2);
+  border-radius: 8px;
+
   > div {
     box-sizing: border-box;
     background-color: ${(props) => props.theme.color.white};
     position: relative;
-    width: 150px;
-    height: 40px;
-    font-size: 16px;
-    cursor: pointer;
+
+    width: 122px;
+    height: 32px;
+
     color: ${(props) => props.theme.color.black};
-    border: 1px solid #d3d3d3;
+    font: ${({ theme }) => theme.font.Body4};
+
+    line-height: 32px;
     text-align: center;
-    font: 500 normal 20px "pretendard", sans-serif;
-    line-height: 40px;
-    :last-child {
-      border-radius: 0px 0px 5px 5px;
+    cursor: pointer;
+
+    :last-of-type {
+      border-radius: 0px 0px 8px 8px;
+    }
+    :first-of-type {
+      border-radius: 8px 8px 0px 0px;
     }
   }
 
-  div:hover {
-    background-color: ${(p) => p.theme.color.gray300};
+  > div:hover {
+    background-color: ${({ theme }) => theme.color.gray300};
   }
 `;
 const _InfoButton = styled.div<{ state: boolean }>`
-  width: 150px;
-  height: 40px;
-  border-radius: 5px 5px ${(props) => (props.state ? 0 : 5)}px
-    ${(props) => (props.state ? 0 : 5)}px;
-  font: 500 normal 20px "Pretendard", sans-serif;
-  line-height: 40px;
-  color: ${(props) => props.theme.color.white};
+  width: 122px;
+  height: 32px;
 
-  background-color: ${(props) => props.theme.color.main700};
-  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 0 10px;
+  gap: 5px;
+
+  color: ${(props) => props.theme.color.black};
+  border: 2px solid ${({ theme }) => theme.color.gray700};
+  font: ${({ theme }) => theme.font.Body4};
+
+  line-height: 32px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+
   div {
     text-align: center;
-    width: 75px;
+    width: 60px;
   }
 `;
 const _SelectIcon = styled.span<{ state: boolean }>`
@@ -97,8 +106,11 @@ const _SelectIcon = styled.span<{ state: boolean }>`
     ease-in-out 0s alternate forwards;
 `;
 const _Layout = styled.div`
-  margin-top: 10px;
-  width: 150px;
-  height: 40px;
   position: relative;
+  width: 122px;
+  height: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
