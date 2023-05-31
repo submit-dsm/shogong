@@ -38,9 +38,9 @@ class FormRepository {
     });
   }
 
-  public async create(formParam: FormWithoutId, formId: number) {
+  public async create(formParam: FormWithoutId) {
     return await db.client.form.create({
-      data: { id: formId, ...formParam },
+      data: { ...formParam },
     });
   }
 
