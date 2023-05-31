@@ -2,7 +2,7 @@ import request from "@/api";
 import { InitialStateType } from "@/util/auth";
 
 export const login = (state: InitialStateType) => {
-  const data: Promise<{ accessToken: string; refreshToken: string }> =
-    request.post("/login", state);
+  const data: Promise<{ access_token: string; refresh_token: string }> =
+    request.post("/auth/sign-in", state);
   return data;
 };
