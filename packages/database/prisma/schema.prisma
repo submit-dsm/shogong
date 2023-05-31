@@ -12,8 +12,14 @@ datasource db {
 }
 
 model Admin {
+<<<<<<< HEAD
   id       Int    @id @default(autoincrement())
   name     String
+=======
+  id Int @id @default(autoincrement())
+  account_id String @unique
+  name String
+>>>>>>> 3ebbc2a6a6890b88465925397663606c617d10a7
   password String
   myForm   Form[]
 }

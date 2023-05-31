@@ -1,13 +1,11 @@
-import { PrismaClient } from "prisma";
+import * as db from "@package/database";
 import { AdminSignUpReqBody } from "@package/api-type";
 
-const prisma = new PrismaClient();
-
 export class AdminRepository {
-  findByUserId = async (id: string) => {
-    return await prisma.admin.findFirst({ where: { id } });
+  findByUserId = async (id: number) => {
+    return await db.client.admin.findFirst({ where: { id } });
   };
   createUser = async (userInfo: AdminSignUpReqBody) => {
-    await prisma.admin.create({ data: userInfo });
+    await db.client.admin.create({ data: userInfo });
   };
 }

@@ -9,7 +9,7 @@ import cors from "cors";
 export default (app: Application) => {
   app.use(json());
   app.use("/", router);
-  cors();
+  app.use(cors());
   morgan("dev");
 
   app.get("/status", (req, res) => {
