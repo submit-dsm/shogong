@@ -30,7 +30,7 @@ const LoginPage: NextPage = () => {
         <SubmitButton
           value={"로그인"}
           onClick={() => {
-            login(state).then((res) => setStorage(res.accessToken));
+            login(state).then((res) => setStorage(res.access_token));
             router.push("/");
           }}
         />
