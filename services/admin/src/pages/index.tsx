@@ -1,27 +1,34 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styled from "@emotion/styled";
-import { CheckButton } from "@/components/survey/check-button";
-import { ChangeEvent, useState } from "react";
-const inter = Inter({ subsets: ["latin"] });
+import { useState } from "react";
+import { Select } from "@/components/survey/select";
+import { SelectTable } from "@/components/survey/select/select-table";
+import { BlockType } from "@package/api-type";
 
 export default function Home() {
-  const [state, setState] = useState<boolean>(false);
+  const [state, setState] = useState<string>("단답형");
+  const data: { [key in BlockType]: string } = {
+    SHORT_ANSWER: "단답형",
+    LONG_ANSWER: "서술형",
+    FILE: "파일 입력",
+    CHECKBOX: "다증선택",
+    RADIO: "단일선택",
+  };
   return (
-    <CheckButton
-      type={"checkbox"}
-      checked={state}
-      id={"안녕"}
-      onChange={function (e: ChangeEvent<HTMLInputElement>): void {
-        setState(e.target.checked);
-      }}
-    />
+    <Button>
+      <Select now={state}>
+        <SelectTable
+          onClick={function (item: BlockType): void {
+            setState(data[item]);
+          }}
+          list={data}
+        />
+      </Select>
+    </Button>
   );
 }
 
 const Button = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: ${({ theme }) => theme.color.black};
+  position: relative;
+  top: 20px;
+  left: 20px;
 `;

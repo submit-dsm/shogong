@@ -12,7 +12,7 @@ export const TextInput = ({ label, ...props }: ITextInputProps) => {
     <>
       <_Layout>
         <_Label htmlFor={props.name}>{label}</_Label>
-        <_TextInput id={props.name} {...props} type="text" />
+        <_TextInput id={props.name} {...props} type="text" required />
       </_Layout>
     </>
   );
@@ -22,14 +22,16 @@ export const _Input = styled.input`
 
   color: ${({ theme }) => theme.color.black};
   font: ${({ theme }) => theme.font.Body1};
+
   border: none;
   padding: 0 20px;
 
+  :focus {
+    outline: none;
+  }
+
   ::placeholder {
     color: ${({ theme }) => theme.color.gray700};
-  }
-  :focus {
-    border: none;
   }
 `;
 const _TextInput = styled(_Input)`

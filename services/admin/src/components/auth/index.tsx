@@ -2,17 +2,20 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import { background } from "images";
 import { ReactNode } from "react";
+import { ArrowIcon } from "@/assets/arrow-icon";
 export interface IAuthTemplate {
   children: ReactNode;
   legend: string;
-  onSubmit: () => void;
 }
-export const AuthTemplate = ({ children, legend, ...props }: IAuthTemplate) => {
+export const AuthTemplate = ({ children, legend }: IAuthTemplate) => {
   return (
     <>
       <_Main>
         <Image src={background} alt={"배경이미지"} fill priority />
-        <_Form {...props}>
+        <_Form>
+          <div>
+            <ArrowIcon />
+          </div>
           <_Legend>{legend}</_Legend>
           {children}
         </_Form>
@@ -27,7 +30,7 @@ const _Main = styled.main`
   justify-content: center;
   align-items: center;
 `;
-const _Form = styled.form`
+const _Form = styled.div`
   position: absolute;
 
   width: 680px;

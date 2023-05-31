@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
-import { type CreateFormRequestDto } from "@package/api-type";
+import { type Block } from "@package/api-type";
 
-export type State = Pick<CreateFormRequestDto, "blocks"> & { index: number };
+export type State = { index: number; blocks: Block[] };
 export type Action =
   | {
       type: "CHANGE";
