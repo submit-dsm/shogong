@@ -8,8 +8,8 @@ import cors from "cors";
 
 export default (app: Application) => {
   app.use(json());
-  app.use("/", router);
   app.use(cors());
+  app.use("/", router);
   morgan("dev");
 
   app.get("/status", (req, res) => {
