@@ -26,7 +26,7 @@ export const Select = ({ now, children }: ISelectProps) => {
           }}
         >
           <div>{now}</div>
-          <_SelectIcon {...{ state: state }}>
+          <_SelectIcon {...{ state }}>
             <PolygonIcon />
           </_SelectIcon>
         </_InfoButton>
