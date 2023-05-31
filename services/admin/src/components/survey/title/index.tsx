@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { ChangeEvent } from "react";
 export interface ITitleInputProps {
-  onInput: () => void;
+  onInput: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 export const TitleInput = (props: ITitleInputProps) => {
   return (
@@ -11,6 +12,7 @@ export const TitleInput = (props: ITitleInputProps) => {
 };
 const _Input = styled.input`
   padding: 10px;
+  outline: none;
 
   width: 648px;
   height: 46px;
