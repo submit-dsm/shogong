@@ -37,7 +37,13 @@ export const SurveyList = () => {
             <_Li
               key={`adsdsaderwem${idx}`}
               onDragStart={() => setState((prev) => ({ ...prev, start: idx }))}
-              onDragEnter={() => setState((prev) => ({ ...prev, end: idx }))}
+              onDragOver={() => {
+                setState((prev) => ({
+                  ...prev,
+                  end: state.start >= idx ? idx : idx + 1,
+                }));
+              }}
+              onDragLeave={() => {}}
               onDragEnd={() => dispatch({ type: "DRAG", ...state })}
               draggable
             >
