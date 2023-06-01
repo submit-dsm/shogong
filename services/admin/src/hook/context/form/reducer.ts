@@ -1,18 +1,24 @@
 import { Dispatch } from "react";
-import { type Block } from "@package/api-type";
+import { BlockType, type Block } from "@package/api-type";
 
 export type State = { index: number; blocks: Block[] };
 export type Action =
   | {
       type: "CHANGE";
-      block: "SHORT_ANSWER" | "FILE" | "LONG_ANSWER" | "RADIO" | "CHECKBOX";
+      block: BlockType;
     }
   | { type: "WRITE"; question: string }
   | { type: "ADD_OPTIONS"; question: string }
   | { type: "DELETE_OPTIONS"; idx: number }
+  | {
+      type: "CHANGE_OPTIONS";
+      idx: number;
+      question: string;
+    }
   | { type: "ADD" }
   | { type: "DELETE"; idx: number }
-  | { type: "INDEX"; idx: number };
+  | { type: "INDEX"; idx: number }
+  | { type: "DRAG"; start: number; end: number };
 
 export type SampleDispatch = Dispatch<Action>;
 
@@ -54,6 +60,20 @@ export const reducer = (state: State, action: Action): State => {
             : e
         ),
       };
+    case "CHANGE_OPTIONS":
+      return {
+        ...state,
+        blocks: state.blocks.map((e, i) =>
+          i === state.index
+            ? {
+                ...e,
+                questionParams: (e.questionParams as string[]).map((e, i) =>
+                  i === action.idx ? action.question : e
+                ),
+              }
+            : e
+        ),
+      };
     case "ADD":
       return {
         index: state.blocks.length,
@@ -64,6 +84,7 @@ export const reducer = (state: State, action: Action): State => {
             type: "SHORT_ANSWER",
             question: "",
             isEssential: false,
+            questionParams: [],
             answerParams: "",
           },
         ],
@@ -73,28 +94,29 @@ export const reducer = (state: State, action: Action): State => {
         index: 0,
         blocks: state.blocks.filter((e, i) => i !== action.idx),
       };
-    case "CHANGE":
+    case "CHANGE": {
       return {
         ...state,
         blocks: state.blocks.map((e, i) =>
-          i === state.index
-            ? {
-                id: "",
-                type: action.block,
-                question: "",
-                isEssential: false,
-                questionParams: [],
-                answerParams: [],
-              }
-            : e
+          i === state.index ? { ...e, type: action.block } : e
         ),
       };
+    }
     case "INDEX":
       return {
         ...state,
         index: action.idx,
       };
+    case "DRAG":
+      return {
+        ...state,
+        blocks: [
+          ...state.blocks.slice(0, action.end),
+          state.blocks[action.start],
+          ...state.blocks.slice(action.end, state.blocks.length),
+        ],
+      };
     default:
-      return state;
+      throw new Error("");
   }
 };

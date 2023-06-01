@@ -15,8 +15,18 @@ const _Input = styled.input`
   outline: none;
 
   width: 648px;
-  height: 46px;
+  height: 36px;
+  outline: none;
 
-  font: ${({ theme }) => theme.font.Heading5};
-  color: ${({ theme }) => theme.color.gray700};
+  font: ${({ theme }) => theme.font.Body1};
+  color: ${({ theme }) => theme.color.black};
+  ::placeholder {
+    color: ${({ theme }) => theme.color.gray700};
+  }
+
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.color.gray700};
+  :focus {
+    border-bottom: 1px solid ${({ theme }) => theme.color.black};
+  }
 `;

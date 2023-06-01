@@ -2,24 +2,21 @@ import { FormContextProvider } from "@/hook/context";
 import styled from "@emotion/styled";
 import { TitleInput } from "../survey/title";
 import { useState } from "react";
+import { SurveyList } from "../survey";
 
-export interface ISurveyProps {
+export interface IFormProps {
   type: string;
 }
-export const Survey = ({ type }: ISurveyProps) => {
+export const Form = () => {
   const [state, setState] = useState<{ title: string }>({ title: "" });
   return (
     <>
-      <FormContextProvider>
-        <_Layout>
-          <TitleInput
-            onInput={(e) => {
-              setState((prev) => ({ ...prev, title: e.target.value }));
-            }}
-          />
-        </_Layout>
-      </FormContextProvider>
+      <_Layout>
+        <SurveyList />
+      </_Layout>
     </>
   );
 };
-const _Layout = styled.div``;
+const _Layout = styled.div`
+  width: 1128px;
+`;

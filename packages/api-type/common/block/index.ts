@@ -7,6 +7,6 @@ export type Block = {
   type: BlockType;
   question: string;
   isEssential?: boolean;
-  questionParams?: QuestionParams[BlockType];
+  questionParams?: string[];
   answerParams: AnswerParams[BlockType];
 };

@@ -4,6 +4,7 @@ export const blockType = {
   RADIO: "RADIO",
   CHECKBOX: "CHECKBOX",
   FILE: "FILE",
+  DROP_DOWN: "DROP_DOWN",
 } as const;
 
 export type BlockType = keyof typeof blockType;
