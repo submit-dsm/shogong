@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import React, { useState, useLayoutEffect, MouseEvent, ReactNode } from "react";
+import React, { useState, MouseEvent, ReactNode, useEffect } from "react";
 import { PolygonIcon } from "@/assets/polygon-icon";
 export interface ISelectProps {
   now: string;
@@ -9,7 +9,7 @@ export interface ISelectProps {
 
 export const Select = ({ now, children }: ISelectProps) => {
   const [state, setState] = useState<boolean>(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.addEventListener("click", () => {
       setState(false);
     });
@@ -48,7 +48,7 @@ const _SelectList = styled.div<{ state: boolean }>`
 
   box-shadow: 1px 1px 10px 5px rgba(231, 95, 176, 0.2);
   border-radius: 8px;
-
+  z-index: 2;
   > div {
     box-sizing: border-box;
     background-color: ${(props) => props.theme.color.white};
