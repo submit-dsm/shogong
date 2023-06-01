@@ -110,11 +110,22 @@ export const reducer = (state: State, action: Action): State => {
     case "DRAG":
       return {
         ...state,
-        blocks: [
-          ...state.blocks.slice(0, action.end),
-          state.blocks[action.start],
-          ...state.blocks.slice(action.end, state.blocks.length),
-        ],
+        blocks:
+          action.start < action.end
+            ? [
+                ...state.blocks
+                  .slice(0, action.end)
+                  .filter((e, i) => i !== action.start),
+                state.blocks[action.start],
+                ...state.blocks.slice(action.end, state.blocks.length),
+              ]
+            : [
+                ...state.blocks.slice(0, action.end),
+                state.blocks[action.start],
+                ...state.blocks
+                  .slice(action.end, state.blocks.length)
+                  .filter((e, i) => i !== action.start - action.end),
+              ],
       };
     default:
       throw new Error("");
