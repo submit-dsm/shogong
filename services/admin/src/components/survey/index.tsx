@@ -98,9 +98,7 @@ const _Li = styled.li`
       right: 10px;
     }
   }
-  :active {
-    transform: scale(1.1, 1.1);
-  }
+
   :hover {
     border-color: ${({ theme }) => theme.color.black};
 
@@ -115,5 +113,9 @@ const _Li = styled.li`
         }
       }
     }
+  }
+  :active {
+    transform: scale(1);
+    border-color: ${({ theme }) => theme.color.main500};
   }
 `;
