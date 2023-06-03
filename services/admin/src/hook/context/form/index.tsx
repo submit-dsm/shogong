@@ -1,33 +1,22 @@
 import { createContext, ReactNode, useReducer } from "react";
-import { type State, reducer, type SampleDispatch } from "./reducer";
+import {
+  type State,
+  reducer,
+  type SampleDispatch,
+  initialValue,
+} from "./reducer";
 export const FormValueContext = createContext<State>({
   index: 0,
-  blocks: [
-    {
-      id: "",
-      type: "SHORT_ANSWER",
-      question: "",
-      isEssential: false,
-      questionParams: [],
-      answerParams: "",
-    },
-  ],
+  blocks: [initialValue],
+  lastDate: new Date(),
 });
 export const FormActionContext = createContext<SampleDispatch>(() => null);
 
 export const FormContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
     index: 0,
-    blocks: [
-      {
-        id: "",
-        type: "SHORT_ANSWER",
-        question: "",
-        isEssential: false,
-        questionParams: [],
-        answerParams: "",
-      },
-    ],
+    blocks: [initialValue],
+    lastDate: new Date(),
   });
   return (
     <>

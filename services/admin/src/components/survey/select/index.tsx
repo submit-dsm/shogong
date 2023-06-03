@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import React, { useState, MouseEvent, ReactNode, useEffect } from "react";
+import React, { useState, MouseEvent, ReactNode, useLayoutEffect } from "react";
 import { PolygonIcon } from "@/assets/polygon-icon";
 export interface ISelectProps {
   now: string;
@@ -9,10 +9,16 @@ export interface ISelectProps {
 
 export const Select = ({ now, children }: ISelectProps) => {
   const [state, setState] = useState<boolean>(false);
-  useEffect(() => {
-    document.addEventListener("click", () => {
-      setState(false);
-    });
+  useLayoutEffect(() => {
+    if (state) {
+      document.addEventListener(
+        "click",
+        () => {
+          setState(false);
+        },
+        { once: true }
+      );
+    }
   }, [state]);
   return (
     <>
