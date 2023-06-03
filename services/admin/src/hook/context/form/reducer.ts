@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { BlockType, type Block } from "@package/api-type";
 
-export type State = { index: number; blocks: Block[] };
+export type State = { index: number; blocks: Block[]; lastDate: Date };
 export type Action =
   | {
       type: "CHANGE";
@@ -18,10 +18,18 @@ export type Action =
   | { type: "ADD" }
   | { type: "DELETE"; idx: number }
   | { type: "INDEX"; idx: number }
-  | { type: "DRAG"; start: number; end: number };
+  | { type: "DRAG"; start: number; end: number }
+  | { type: "DATE"; lastDate: Date };
 
 export type SampleDispatch = Dispatch<Action>;
-
+export const initialValue: Block = {
+  id: "",
+  type: "SHORT_ANSWER",
+  question: "",
+  isEssential: false,
+  questionParams: [],
+  answerParams: "",
+};
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "WRITE":
@@ -76,21 +84,13 @@ export const reducer = (state: State, action: Action): State => {
       };
     case "ADD":
       return {
+        ...state,
         index: state.blocks.length,
-        blocks: [
-          ...state.blocks,
-          {
-            id: "",
-            type: "SHORT_ANSWER",
-            question: "",
-            isEssential: false,
-            questionParams: [],
-            answerParams: "",
-          },
-        ],
+        blocks: [...state.blocks, initialValue],
       };
     case "DELETE":
       return {
+        ...state,
         index: 0,
         blocks: state.blocks.filter((e, i) => i !== action.idx),
       };
@@ -123,6 +123,11 @@ export const reducer = (state: State, action: Action): State => {
               action.start < action.end ? true : i !== action.start - action.end
             ),
         ],
+      };
+    case "DATE":
+      return {
+        ...state,
+        lastDate: action.lastDate,
       };
     default:
       throw new Error("");
