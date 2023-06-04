@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import React, { useState, MouseEvent, ReactNode, useLayoutEffect } from "react";
 import { PolygonIcon } from "@/assets/polygon-icon";
+import { useClickHandler } from "@/hook/useClickHandler";
 export interface ISelectProps {
   now: string;
   children: ReactNode;
@@ -9,28 +10,11 @@ export interface ISelectProps {
 
 export const Select = ({ now, children }: ISelectProps) => {
   const [state, setState] = useState<boolean>(false);
-  useLayoutEffect(() => {
-    if (state) {
-      document.addEventListener(
-        "click",
-        () => {
-          setState(false);
-        },
-        { once: true }
-      );
-    }
-  }, [state]);
+  const { onClick } = useClickHandler({ state, setState });
   return (
     <>
       <_Layout>
-        <_InfoButton
-          id={now}
-          {...{ state }}
-          onClick={(e: MouseEvent<HTMLDivElement>) => {
-            e.stopPropagation();
-            setState((prev) => !prev);
-          }}
-        >
+        <_InfoButton id={now} {...{ state, onClick }}>
           <div>{now}</div>
           <_SelectIcon {...{ state }}>
             <PolygonIcon />
@@ -82,7 +66,7 @@ const _SelectList = styled.div<{ state: boolean }>`
     background-color: ${({ theme }) => theme.color.gray300};
   }
 `;
-const _InfoButton = styled.div<{ state: boolean }>`
+const _InfoButton = styled.button<{ state: boolean }>`
   width: 122px;
   height: 32px;
 
@@ -91,6 +75,7 @@ const _InfoButton = styled.div<{ state: boolean }>`
   justify-content: center;
   gap: 5px;
 
+  background-color: ${({ theme }) => theme.color.white};
   color: ${(props) => props.theme.color.black};
   border: 2px solid ${({ theme }) => theme.color.gray700};
   font: ${({ theme }) => theme.font.Body4};
