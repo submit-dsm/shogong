@@ -1,32 +1,17 @@
 import { useFormValue } from "@/hook/context/form/useFormValue";
+import { useClickHandler } from "@/hook/useClickHandler";
 import styled from "@emotion/styled";
-import { Dispatch, SetStateAction, useLayoutEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 export interface ICalendarModal {
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
 }
 export const CalendarButton = ({ modal, setModal }: ICalendarModal) => {
   const { lastDate } = useFormValue();
-  useLayoutEffect(() => {
-    if (modal) {
-      document.addEventListener(
-        "click",
-        () => {
-          setModal(false);
-        },
-        { once: true }
-      );
-    }
-  }, [modal, setModal]);
+  const { onClick } = useClickHandler({ state: modal, setState: setModal });
   return (
     <>
-      <_Button
-        onClick={(e) => {
-          e.stopPropagation();
-          setModal((prev) => !prev);
-        }}
-        active={modal}
-      >
+      <_Button onClick={onClick} active={modal}>
         <div>
           {lastDate.getFullYear()}/{lastDate.getMonth()}/{lastDate.getDate()}
         </div>
