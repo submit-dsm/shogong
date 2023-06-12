@@ -7,6 +7,8 @@ import { Layout } from "../layout";
 import { ParticipatingGroup } from "../students";
 import { TextArea } from "../textarea";
 import { FormTitleInput } from "../title";
+import { background } from "images";
+import { theme } from "@package/ui";
 
 export const Form = () => {
   const [state, setState] = useState<{ checked: boolean }>({ checked: false });
@@ -17,24 +19,15 @@ export const Form = () => {
     <>
       <_Layout>
         <FormTitleInput
-          onChange={function (e: ChangeEvent<HTMLInputElement>): void {
-            throw new Error("Function not implemented.");
-          }}
+          onChange={function (e: ChangeEvent<HTMLInputElement>): void {}}
           value={""}
         />
         <TextArea
-          onChange={function (e: ChangeEvent<HTMLTextAreaElement>): void {
-            throw new Error("Function not implemented.");
-          }}
+          onChange={function (e: ChangeEvent<HTMLTextAreaElement>): void {}}
           defaultValue={""}
         />
         <_Flex>
-          <ParticipatingGroup
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            value={""}
-          />
+          <ParticipatingGroup onClick={function (): void {}} value={""} />
           <Calendar />
         </_Flex>
         <Layout text={"익명"}>

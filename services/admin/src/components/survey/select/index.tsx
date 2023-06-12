@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import React, { useState, MouseEvent, ReactNode, useLayoutEffect } from "react";
+import React, { useState, ReactNode } from "react";
 import { PolygonIcon } from "@/assets/polygon-icon";
 import { useClickHandler } from "@/hook/useClickHandler";
 export interface ISelectProps {
@@ -14,7 +14,7 @@ export const Select = ({ now, children }: ISelectProps) => {
   return (
     <>
       <_Layout>
-        <_InfoButton id={now} {...{ state, onClick }}>
+        <_InfoButton id={now} {...{ onClick }}>
           <div>{now}</div>
           <_SelectIcon {...{ state }}>
             <PolygonIcon />
@@ -66,7 +66,7 @@ const _SelectList = styled.div<{ state: boolean }>`
     background-color: ${({ theme }) => theme.color.gray300};
   }
 `;
-const _InfoButton = styled.button<{ state: boolean }>`
+const _InfoButton = styled.button`
   width: 122px;
   height: 32px;
 
