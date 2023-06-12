@@ -10,7 +10,7 @@ export const useClickHandler = ({
   const onClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setState((prev) => !prev);
-    if (state) {
+    if (!state) {
       document.addEventListener(
         "click",
         () => {
